@@ -7,21 +7,29 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "install-dependencies": "npm install --save @angular/cdk && npm install --save @angular/material && npm install --save @ngx-translate/core && npm install --save @ngx-translate/http-loader && npm install --save bulma && npm install --save moment-timezone && npm install --save ngx-mask"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.2.14",
     "@angular/common": "~8.2.14",
     "@angular/compiler": "~8.2.14",
+    "@angular/cdk": "~8.2.3",
     "@angular/core": "~8.2.14",
     "@angular/forms": "~8.2.14",
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@angular/material": "^8.2.3",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "@ngx-translate/core": "^11.0.1",
+    "@ngx-translate/http-loader": "^4.0.0",
+    "bulma": "^0.7.5",
+    "moment-timezone": "^0.5.27",
+    "ngx-mask": "^8.1.6"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.20",

@@ -1,0 +1,278 @@
+@import '../../../styles.scss';
+.form-question {
+    margin-bottom: 40px;
+    &.withoutMargin {
+        margin: 30px 0 !important;
+    }
+    &.invalid {
+       div.question {
+           border-color: $error;
+       }
+       label.checkbox {
+           color: $error;
+       }
+      }
+    &.noPointerEvents {
+        pointer-events: none;
+        label {
+            color: #B1B1B1
+        }
+    }
+    .focusedQuestion {
+      border: 1px solid #696969 !important;
+    }
+    &.questionGroupRadio {
+        margin-top: -20px;
+    }
+    div.question {
+        border: 1px solid #d0d0d0;
+        padding: 8px 3px 3px 3px;
+        border-radius: 6px;
+        position: relative;
+        > label {
+            background-color: #fff;
+            position: absolute;
+            top: -10px;
+            padding: 0 2px;
+            font-size: 14px;
+            left: 6px;
+        }
+    }
+    div.noBorder {
+        border: 0;
+    }
+    input {
+        border: 0;
+        box-shadow: none !important;
+        width: 95%;
+    }
+
+    @media (max-width: 600px) {
+      input {
+        width: 90%;
+      }
+    }
+
+    .error {
+        border: 1px solid $error !important;
+    }
+    .errorMessage {
+        color: $error;
+        ul {
+            padding: 10px 0;
+            li {
+                margin: 0 10px 0 0;
+                padding: 5px 0;
+                .errorColor {
+                    color: $error !important
+                }
+                .spanLink {
+                    color: #429FBC !important;
+                    cursor: pointer;
+                }
+                div {
+                    margin: 0 10px 0 0;
+                }
+            }
+        }
+        #listOfLinks {
+            span {
+                color: $error !important;
+            }
+            b {
+                color: #429FBC;
+                cursor: pointer;
+            }
+        }
+    }
+    .select {
+        width: 100%;
+        color: #a2a2a2;
+        select {
+            width: 100%;
+            border: 0 !important;
+            &:focus {
+                outline: none !important;
+            }
+        }
+    }
+    .control {
+        display: flex;
+        flex-direction: column;
+        .radio {
+            display: flex;
+            margin: 5px;
+        }
+        .gridRadio {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            flex-wrap: wrap;
+            > div {
+                margin: 0;
+                box-sizing: border-box; 
+                flex: .2;
+                label {
+                    span {
+                        margin: 0;
+                        white-space: pre;
+                    }
+                }
+            }
+        }
+    }
+
+    .fa-times-circle {
+        margin-top: 7.5px;
+        color: #f15c42;
+    }
+
+    /*Checkbox*/
+    .checkbox {
+        margin-bottom: -30px;
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+        }
+        .checkmark {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 25px;
+          width: 25px;
+          background-color: white;
+          border: solid 1px #d0d0d0;
+          border-radius: 5px;
+        }
+        hover input ~ .checkmark {
+          background-color: #ccc;
+        }
+        input:checked ~ .checkmark {
+            background-color: $primaryColor;
+        }
+        .checkmark:after {
+          content: "";
+          position: absolute;
+          display: none;
+        }
+        input:checked ~ .checkmark:after {
+          display: block;
+        }
+        .checkmark svg {
+            position: absolute;
+            left: 3.5px;
+            top: 3.5px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .check-label {
+            font-size: 16px;
+            font-weight: bold;
+            a {
+                color: #429FBC;
+            }
+        }
+    }
+    .line-error {
+        .fa-check-circle {
+            color: #40b897 !important;
+        }
+        div {
+            display: inline;
+            margin: 3px;
+        }
+        span {
+            color: #373737 !important;
+            font-weight: bold;
+        }
+    }
+    app-mat-autocomplete {
+        width: 100%;
+        display: block;
+    }
+}
+
+@media (max-width: 990px){
+    .form-question {
+        width: 100% !important;
+        margin-bottom: 20px;
+    }
+    .form-question .control .gridRadio {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        > div {
+            padding: 5px 0;
+            width: 100%;
+        }
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill-normal;
+    -webkit-animation-fill-mode: both;
+}
+@-webkit-keyframes autofill-normal {
+    to {
+        color: $text;
+        background: transparent; 
+    }
+}
+
+#dark-mode, .dark-mode {
+   label:not(.checkbox) {
+       color: #fff;
+       background-color: rgba(51, 51, 51, 1);
+       border-radius: 5px;
+   }
+   label.checkbox {
+       color: #fff;
+   }
+   .control {
+       label {
+           background-color: transparent !important;
+       }
+   }
+   .input {
+       width: 100vw;
+   }
+   .input[type='text'], .input[type='password'], .input[type='email'], .input[type='tel'] {
+       background-color: transparent;
+       color: #fff !important;
+       padding: 0 10px;
+       &::-webkit-input-placeholder  {
+        color: rgba(255,255,255,.8) !important;
+      }
+   }
+  .dark-mode-icon {
+      color: #fff !important;
+      svg {
+          color: #fff !important;
+      }
+  }
+  @-webkit-keyframes autofill-dark-mode {
+    to {
+        color: #fff;
+        background: transparent; 
+    }
+}
+
+    input:-webkit-autofill {
+        -webkit-animation-name: autofill-dark-mode;
+        -webkit-animation-fill-mode: both;
+    }
+}
+

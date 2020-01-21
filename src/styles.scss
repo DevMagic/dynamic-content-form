@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'bulma/css/bulma.css';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+$error: #FF3E1D;
+$link: #429FBC;
+$text: #333333;
+$primaryColor: #F85A3F;

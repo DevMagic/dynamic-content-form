@@ -1,0 +1,75 @@
+<div [formGroup]="form" class="form-question {{question.cssClass ? question.cssClass : '' }}" *ngIf="question.visible" [ngClass]="{questionGroupRadio: question.controlType == 'radio', 'noPointerEvents': question.blockInteractions }">
+  <div class="question" [ngClass]="{noBorder : question.controlType == 'checkbox' || question.controlType == 'radio' ? true : false, error : ((!isValid && hasError) || !isValid && value), focusedQuestion : question.focus}">
+    <label [attr.for]="question.key" *ngIf="question.controlType == 'textbox' || question.controlType == 'dropdown' || question.controlType == 'autocomplete'">{{question.label}}</label>
+
+    <div [ngSwitch]="question.controlType">
+  
+      <div *ngSwitchCase="'textbox'">
+        
+        <!-- input with mask -->
+        <input [formControlName]="question.key" autocomplete="off" [id]="question.key" [type]="question.type" [placeholder]="question.placeholder" class="input" *ngIf="question.mask != null" [mask]="question.mask" [dropSpecialCharacters]="false" (focus)="question.onFocus()" (blur)="question.onBlur()"/>
+
+        <!-- input without mask -->
+        <input [formControlName]="question.key" autocomplete="off" [id]="question.key" [type]="question.type" [placeholder]="question.placeholder" class="input" *ngIf="question.mask == null" (focus)="question.onFocus()" (blur)="question.onBlur()"/>
+      
+      </div>
+      
+      <div class="select" *ngSwitchCase="'dropdown'">
+        <select [id]="question.key" [formControlName]="question.key">
+          <option *ngFor="let opt of question.options" [value]="opt.value">{{opt.key}}</option>
+        </select>
+      </div>
+
+      <div *ngSwitchCase="'autocomplete'">
+
+        <app-mat-autocomplete [myFormControl]="question.formControl" [id]="question.key" [question]="question" [form]="form">
+        </app-mat-autocomplete>
+
+      </div>
+
+      <label class="checkbox" *ngSwitchCase="'checkbox'" >
+        <input type="checkbox" [formControlName]="question.key" [checked]="value"/>
+        <span class="checkmark {{ productAbbreviation }}"><i class="fas fa-check"></i></span>
+        <span class="check-label">
+          {{ question.label }} <a *ngIf='question.link' href='{{question.link.url}}' target="_blank">
+              {{ question.link.message }}
+          </a>
+        </span>
+      </label>
+
+      <div class="control" *ngSwitchCase="'radio'">
+        <label>{{question.label}}</label>
+        <div class='gridRadio'>
+          <div *ngFor="let opt of question.options">
+            <label class="radio">
+              <input type="radio" [formControlName]="question.key" [value]="opt.value" />
+              <span>{{opt.key}}</span>
+            </label>
+          </div>
+        </div>
+      </div>
+  
+    </div> 
+  
+  </div>
+
+  <div *ngIf='question.validateMessage || question.controlType == "autocomplete" || question.key == "password"'>
+    <div class="errorMessage" *ngIf="!isValid && hasError">{{question.errorMessage ? question.errorMessage : question.label + ' è obbligatorio' }}</div>
+    <div class="errorMessage" *ngIf="!isValid && value && !hasMultipleErrorMessages">{{question.validationErrorMessage ? question.validationErrorMessage : 'Campo non valido' }}</div>
+    <div class="errorMessage" *ngIf="value && hasMultipleErrorMessages && !hasError && !isValid">
+      <ul>
+        <li *ngFor="let error of question.validationErrorMessages" class="line-error">
+          <div *ngIf="error.hasError && (!error.urlLink && !error.urlLinks?.length)"><i class="fas fa-times-circle"></i></div>
+          <div *ngIf="!error.hasError && (!error.urlLink && !error.urlLinks?.length)"><i class="fas fa-check-circle"></i></div>
+          <span class='errorColor'>{{error.label}}</span>
+          <span *ngIf='error.urlLink && error.urlMessage' class='spanLink' (click)='redirectTo(error.urlLink)'> {{ error.urlMessage }}</span>
+          <div *ngIf='error.hasError && error.urlLinks' id='listOfLinks'>
+            <span *ngFor='let error of error.urlLinks; let i = index'> 
+              <b (click)='redirectTo(error.link)'> {{ error.message }}</b> <span [innerHTML]="'AuxiliarText.Or' | translate" *ngIf='i == 0'></span>
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
