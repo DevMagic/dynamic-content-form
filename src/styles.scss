@@ -10,3 +10,49 @@ $error: #FF3E1D;
 $link: #429FBC;
 $text: #333333;
 $primaryColor: #F85A3F;
+
+.btn {
+    border-radius: 5px;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    transition: .3s;
+    border: none;
+    padding: 10px 25px;
+    font-size: 16px;
+    min-height: 40px;
+    margin: 0;
+    align-items: center;
+
+    span,
+    .fas,
+    svg {
+        margin: 0 5px;
+        display: inline-block;
+    }
+
+    &:hover {
+        transform: scale(1.05)
+    }
+
+    &[disabled] {
+        opacity: 0.7;
+    }
+
+    &.with-opacity {
+        opacity: .8;
+    }
+
+    &.default-button {
+        background-color: $primaryColor;
+    }
+
+    &.without-background {
+        background-color: transparent;
+
+        &.white {
+            color: #fff;
+            border: 1px solid #fff;
+        }
+    }
+}

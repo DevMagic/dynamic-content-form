@@ -9,12 +9,9 @@ import { AutocompleteQuestion } from './question-autocomplete';
 import { FormGroup, Validators } from '@angular/forms';
 
 import * as moment from 'moment';
-import { TranslateService } from '@ngx-translate/core';
 
 export class AllQuestions {
-  constructor(
-    public translate: TranslateService
-  ) { }
+  constructor() { }
   questions: QuestionBase<any>[] = [
 
     /*

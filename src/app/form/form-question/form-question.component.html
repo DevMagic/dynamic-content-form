@@ -65,7 +65,7 @@
           <span *ngIf='error.urlLink && error.urlMessage' class='spanLink' (click)='redirectTo(error.urlLink)'> {{ error.urlMessage }}</span>
           <div *ngIf='error.hasError && error.urlLinks' id='listOfLinks'>
             <span *ngFor='let error of error.urlLinks; let i = index'> 
-              <b (click)='redirectTo(error.link)'> {{ error.message }}</b> <span [innerHTML]="'AuxiliarText.Or' | translate" *ngIf='i == 0'></span>
+              <b (click)='redirectTo(error.link)'> {{ error.message }}</b> 
             </span>
           </div>
         </li>

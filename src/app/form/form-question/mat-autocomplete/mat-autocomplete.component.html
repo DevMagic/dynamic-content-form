@@ -1,1 +1,36 @@
-<p>mat-autocomplete works!</p>
+<mat-form-field 
+  class="example-full-width">
+
+  <label class="autocomplete-placeholder" *ngIf="!myFormControl.value">
+    {{question.placeholder}}
+  </label>
+
+  <span class="erase-selection" (click)="eraseSelect($event)" *ngIf="myFormControl.value">
+    <i class="far fa-times-circle"></i>
+  </span>
+    <input 
+      type="text" 
+      class="input"
+      aria-label="Number" 
+      matInput 
+      [formControl]="myFormControl" 
+      [matAutocomplete]="auto"
+      (click)='autocompleteFocused()'
+      autocomplete="none"
+      [id]='question.key'
+      #inputAutoComplit
+      [ngClass]="{'dark-mode': darkMode }"
+    >
+
+  <mat-autocomplete 
+    #auto="matAutocomplete"
+    [displayWith]="displayFn"
+    (optionSelected)='autocompleteBlur()'
+    >
+    <mat-option 
+      *ngFor="let option of filteredOptions | async" 
+      [value]="option">
+      {{option.key}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

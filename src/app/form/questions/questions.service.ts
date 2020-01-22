@@ -7,9 +7,9 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class QuestionsService {
 
-  constructor(public translate: TranslateService) { }
+  constructor() { }
 
-  allQuestions: AllQuestions = new AllQuestions(this.translate);
+  allQuestions: AllQuestions = new AllQuestions();
 
   getQuestions(formName: string) {
 
