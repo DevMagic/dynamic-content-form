@@ -1,0 +1,152 @@
+{
+    "form": {
+        "step-one": {
+            "name": {
+                "label": "Nome completo",
+                "placeholder": "Digite seu nome",
+                "error-message": "Insira seu nome, por favor",
+                "validation-error-message": "Digite seu nome e sobrenome, por favor"
+            },
+            "cellphone": {
+                "label": "Celular",
+                "placeholder": "Digite o número do seu celular",
+                "error-message": "Insira seu número de celular, por favor",
+                "validation-error-message": "Preencha com um número de celular válido, por favor"
+            },
+            "email": {
+                "label": "E-mail",
+                "placeholder": "Não se preocupe, não mandaremos spam",
+                "error-message": "Insira seu e-mail, por favor",
+                "validation-error-message": "Digite um e-mail válido, por favor"
+            },
+            "birthdate": {
+                "label": "Data de Nascimento",
+                "placeholder": "Quando você nasceu?",
+                "error-message": "Insira sua data de nascimento, por favor",
+                "validation-error-message": "Insira uma data de nascimento válida, por favor"
+            },
+            "checkbox-terms": {
+                "message": "Li e aceito",
+                "link": "os termos de uso e condições de cadastro"
+            },
+            "english-level": {
+                "label": "Nível de Inglês",
+                "placeholder": "Qual é o seu nível de inglês?",
+                "error-message": "Selecione uma opção, por favor",
+                "options": {
+                    "option-1": {
+                        "key": "Não falo inglês"
+                    },
+                    "option-2": {
+                        "key": "Básico"
+                    },
+                    "option-3": {
+                        "key": "Intermediário"
+                    },
+                    "option-4": {
+                        "key": "Avançado"
+                    }
+                }
+            }
+        },
+        "step-two": {
+            "work-experience": {
+                "label": "Esperienza lavorativa",
+                "placeholder": "Quanto tempo di esperienza hai?",
+                "error-message": "Per favore scegli un'opzione",
+                "options": {
+                    "option-1": {
+                        "key": "Non ho esperienza professionale nel mio campo di studi"
+                    },
+                    "option-2": {
+                        "key": "Più di 3 mesi"
+                    },
+                    "option-3": {
+                        "key": "Più di 6 mesi"
+                    },
+                    "option-4": {
+                        "key": "Più di un anno"
+                    }
+                },
+                "error-messages": {
+                    "label": "Se non hai un'esperienza professionale nell'ambito di interesse, non puoi scegliere un tirocinio retribuito, ma puoi scegliere un progetto di",
+                    "UrlLinks": {
+                        "GE": {
+                            "Message": "stage in start up qui"
+                        },
+                        "GV": {
+                            "Message": "volontariato internazionale qui."
+                        }
+                    }
+                }
+            },
+            "Education": {
+                "label": "Istruzione",
+                "placeholder": "Qual è il tuo livello di istruzione?",
+                "error-message": "Per favore scegli il tuo livello di Istruzione",
+                "options": {
+                    "option-1": {
+                        "key": "Diploma"
+                    },
+                    "option-2": {
+                        "key": "Laurea Triennale"
+                    },
+                    "option-3": {
+                        "key": "Laurea a Ciclo Unico"
+                    },
+                    "option-4": {
+                        "key": "Laurea Magistrale"
+                    },
+                    "option-5": {
+                        "key": "Laurea Specialistica"
+                    },
+                    "option-6": {
+                        "key": "Master"
+                    },
+                    "option-7": {
+                        "key": "Studi conclusi"
+                    },
+                    "Radio": {
+                        "option-1": {
+                            "key": "Primo Anno"
+                        },
+                        "option-2": {
+                            "key": "Secondo Anno"
+                        },
+                        "option-3": {
+                            "key": "Terzo Anno"
+                        },
+                        "option-4": {
+                            "key": "Quarto Anno"
+                        },
+                        "option-5": {
+                            "key": "Quinto Anno"
+                        }
+                    }
+                }
+            },
+            "Password": {
+                "label": "Password",
+                "placeholder": "E' per il tuo profilo aiesec.org",
+                "error-message": "È necessaria una password per accedere alla nostra piattaforma globale e vedere le opportunità",
+                "error-messages": {
+                    "Error1": "Almeno una lettera minuscola",
+                    "Error2": "Almeno una lettera maiuscola",
+                    "Error3": "Almeno un numero",
+                    "Error4": "Almeno 8 caratteri"
+                }
+            },
+            "ConfirmPassword": {
+                "label": "Conferma password",
+                "placeholder": "E' per il tuo profilo aiesec.org",
+                "error-message": "È necessaria una password per accedere alla nostra piattaforma globale e vedere le opportunità",
+                "validation-error-message": "Ops, le password non combaciano. Ricontrolla, per favore"
+            }
+        }
+    },
+    "Button": {
+        "Cancel": "<span class='fas fa-arrow-left'></span> Indietro",
+        "Next": "Avanti <span class='fas fa-arrow-right'></span>",
+        "Submit": "Crea il mio profilo!"
+    }
+}

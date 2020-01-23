@@ -8,10 +8,13 @@ import { AutocompleteQuestion } from './question-autocomplete';
 
 import { FormGroup, Validators } from '@angular/forms';
 
+import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment';
 
 export class AllQuestions {
-  constructor() { }
+  constructor(
+    public translate: TranslateService
+  ) { }
   questions: QuestionBase<any>[] = [
 
     /*
@@ -30,12 +33,12 @@ export class AllQuestions {
 
     new TextboxQuestion({
       key: 'name',
-      label: 'Nome',
+      label: this.translate.instant('form.step-one.name.label'),
       value: '',
       type: 'text',
-      placeholder: 'Digite seu nome',
-      errorMessage: 'Digite seu nome, por favor',
-      validationErrorMessage: 'Digite nome e sobrenome',
+      placeholder: this.translate.instant('form.step-one.name.placeholder'),
+      errorMessage: this.translate.instant('form.step-one.name.error-message'),
+      validationErrorMessage: this.translate.instant('form.step-one.name.validation-error-message'),
       validator: (value: any) => {
         return (value && value.length && value.split(" ").length > 1 && value.split(" ")[1].length ? true : false);
       },
@@ -51,11 +54,11 @@ export class AllQuestions {
 
     new TextboxQuestion({
       key: 'cellphone',
-      label: 'Celular',
+      label: this.translate.instant('form.step-one.cellphone.label'),
       value: '',
-      placeholder: 'Digite o número do seu celular',
-      errorMessage: 'Digite seu número de celular, por favor',
-      validationErrorMessage: 'Digite um número de celular válido, por favor',
+      placeholder: this.translate.instant('form.step-one.cellphone.placeholder'),
+      errorMessage: this.translate.instant('form.step-one.cellphone.error-message'),
+      validationErrorMessage: this.translate.instant('form.step-one.cellphone.validation-error-message'),
       type: 'tel',
       required: true,
       onChange: (option: any, form: FormGroup, questions: QuestionBase<any>[]) => {
@@ -64,17 +67,17 @@ export class AllQuestions {
       },
       step: 1,
       order: 2,
-      mask: '000 000 0000',
+      mask: '(00) 00000-0000',
       belongsTo: ['form1']
     }),
 
     new TextboxQuestion({
       key: 'email',
-      label: 'E-mail',
+      label: this.translate.instant('form.step-one.email.label'),
       value: '',
-      placeholder: 'Digite seu e-mail',
-      errorMessage: 'Digite seu e-mail, por favor',
-      validationErrorMessage: 'Digite um endereço de e-mail válido',
+      placeholder: this.translate.instant('form.step-one.email.placeholder'),
+      errorMessage: this.translate.instant('form.step-one.email.error-message'),
+      validationErrorMessage: this.translate.instant('form.step-one.email.validation-error-message'),
       onChange: (option: any, form: FormGroup, questions: QuestionBase<any>[]) => {
         let question = questions.find((question) => { return question.key == 'email'});
         question.cssClass ? question.cssClass = null : false;
@@ -88,11 +91,11 @@ export class AllQuestions {
 
     new TextboxQuestion({
       key: 'birthdate',
-      label: 'Data de nascimento',
+      label: this.translate.instant('form.step-one.birthdate.label'),
       value: '',
-      placeholder: 'Data de nascimento',
-      errorMessage: 'Informe sua data de nascimento, por favor',
-      validationErrorMessage: 'Informe uma data válida',
+      placeholder: this.translate.instant('form.step-one.birthdate.placeholder'),
+      errorMessage: this.translate.instant('form.step-one.birthdate.error-message'),
+      validationErrorMessage: this.translate.instant('form.step-one.birthdate.validation-error-message'),
       onChange: (option: any, form: FormGroup, questions: QuestionBase<any>[]) => {
         let question = questions.find((question) => { return question.key == 'birthdate'});
         question.cssClass ? question.cssClass = null : false;
@@ -105,15 +108,10 @@ export class AllQuestions {
 
         let date = moment(value, 'DDMMYYYY').format('DD/MM/YYYY').split('/');
         let dateIsValid = ((+date[0] > 0 && +date[0] <= 31) && (+date[1] > 0 && +date[1] <= 12) && (+date[2] > 1900 && +date[2] < moment().year()));
-        let yearsOld = moment().diff(moment(value, 'DDMMYYYY').format('MM-DD-YYYY'), 'years');
         let result = null;
 
         if (!dateIsValid) {
-          result =  'Informe uma data válida';
-        }
-
-        if (dateIsValid && (yearsOld > 30 || yearsOld < 18)) {
-          result = 'Você precisa ter entre 18 e 30 anos';
+          result =  this.translate.instant('form.step-one.birthdate.validation-error-message')
         }
 
         return (result == null ? true : result);
@@ -129,10 +127,10 @@ export class AllQuestions {
 
     new CheckboxQuestion({
       key: 'terms',
-      label: 'Li e aceito',
+      label: this.translate.instant('form.step-one.checkbox-terms.message'),
       link: {
-        message: "os termos de uso e condições de cadastro",
-        url: 'https://www.aiesec.it/termini-duso-e-le-condizioni-di-registrazione-aiesec-in-italia/'
+        message: this.translate.instant('form.step-one.checkbox-terms.link'),
+        url: 'http://devmagic.com.br'
       },
       value: false,
       onChange: (option: any, form: FormGroup, questions: QuestionBase<any>[]) => {
@@ -143,6 +141,28 @@ export class AllQuestions {
       order: 5,
       required: true,
       belongsTo: ['form1']
+    }),
+
+    new AutocompleteQuestion({
+      key: 'english_level',
+      label: this.translate.instant('form.step-one.english-level.label'),
+      placeholder: this.translate.instant('form.step-one.english-level.placeholder'),
+      belongsTo: ['form1'],
+      cssClass: 'withoutMargin',
+      options: [
+        { key: this.translate.instant('form.step-one.english-level.options.option-1.key'), value: '0' },
+        { key: this.translate.instant('form.step-one.english-level.options.option-2.key'), value: '1' },
+        { key: this.translate.instant('form.step-one.english-level.options.option-3.key'), value: '2' },
+        { key: this.translate.instant('form.step-one.english-level.options.option-4.key'), value: '3' },
+      ],
+      step: 1,
+      required: true,
+      order: 4,
+      errorMessage: this.translate.instant('form.step-one.english-level.error-message'),
+      onChange: (option: any, form: FormGroup, questions: QuestionBase<any>[]) => {
+        let question = questions.find((question) => { return question.key == 'english_level'});
+        question.cssClass ? question.cssClass = null : false;
+      }
     }),
 
   ]
