@@ -17,7 +17,7 @@ export class FormComponent implements OnInit {
   form: FormGroup;
   payLoad = '';
   currentStep: number = 1;
-  maxSteps: number = 2;
+  maxSteps: number;
   submitted : boolean = false;
   loading : boolean = false;
 
@@ -29,6 +29,7 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.questions = this.qs.getQuestions('form1');
+    this.maxSteps = [...new Set(this.questions.map(p => p.step))].length;
     this.form = this.qcs.toFormGroup(this.questions);
     this.onInitForm();
   }
@@ -91,7 +92,9 @@ export class FormComponent implements OnInit {
       this.moveToTop();
     }
     else {
-      this.loading = true;
+      // this.loading = true;
+
+      window.open('http://www.devmagic.com.br', '_target');
     }
   }
 
