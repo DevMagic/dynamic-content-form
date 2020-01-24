@@ -8,17 +8,18 @@
       <button type="button" class='btn' (click)="goToPreviousStep()" *ngIf="currentStep > 1 && !loading"
         class="btn back-button" [innerHTML]="Voltar"></button>
       <div class="form-row align-right next-button">
-        
+
         <button type="submit" id="btn-{{currentStep}}" class='animated faster btn default-button'
           [ngClass]="{'disabled': !isValidFormStep() || !form.controls['terms'].value }" *ngIf="currentStep < maxSteps"
-          [innerHTML]="'Próximo'">
+          [innerHTML]="'button.next' | translate">
           <span class="fas fa-arrow-right"></span>
         </button>
 
         <button type="submit" id="btn-{{currentStep}}"
           [ngClass]="{'disabled': !isValidFormStep() || !form.controls['terms'].value }"
           class='animated faster btn default-button' *ngIf="!loading && currentStep == maxSteps"
-          [innerHTML]="Enviar"></button>
+          [innerHTML]="'button.submit' | translate"></button>
+
         <button *ngIf='loading && currentStep == maxSteps' class='button btn default-button is-loading'></button>
       </div>
     </div>

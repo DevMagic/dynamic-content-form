@@ -144,9 +144,9 @@
             }
         }
     },
-    "Button": {
-        "Cancel": "<span class='fas fa-arrow-left'></span> Indietro",
-        "Next": "Avanti <span class='fas fa-arrow-right'></span>",
-        "Submit": "Crea il mio profilo!"
+    "button": {
+        "cancel": "<span class='fas fa-arrow-left'></span> Indietro",
+        "next": "Próximo <span class='fas fa-arrow-right'></span>",
+        "submit": "Finalizar cadastro!"
     }
 }
