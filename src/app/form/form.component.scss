@@ -1,9 +1,5 @@
 @import '../../styles.scss';
 
-.form-wrapper {
-  padding: 10px;
-}
-
 button {
   border: none;
   border-radius: 5px;
@@ -31,6 +27,7 @@ button {
 
 .form-row-buttons {
   display: flex;
+  margin: 20px 0;
   &.just-one-step {
     justify-content: flex-end;
   }
@@ -57,10 +54,5 @@ button {
       margin: 10px 0;
       justify-content: center;
     }
-  }
-
-  .form-wrapper {
-    padding: 0;
-    width: 100% !important;
   }
 }

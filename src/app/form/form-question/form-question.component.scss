@@ -1,9 +1,6 @@
 @import '../../../styles.scss';
 .form-question {
-    margin-bottom: 40px;
-    &.withoutMargin {
-        margin: 30px 0 !important;
-    }
+   margin: 25px 0 10px 0;
     &.invalid {
        div.question {
            border-color: $error;
@@ -129,7 +126,6 @@
 
     /*Checkbox*/
     .checkbox {
-        margin-bottom: -30px;
         display: block;
         position: relative;
         padding-left: 35px;
@@ -225,54 +221,10 @@ input:-webkit-autofill {
     -webkit-animation-name: autofill-normal;
     -webkit-animation-fill-mode: both;
 }
+
 @-webkit-keyframes autofill-normal {
     to {
         color: $text;
         background: transparent; 
     }
 }
-
-#dark-mode, .dark-mode {
-   label:not(.checkbox) {
-       color: #fff;
-       background-color: rgba(51, 51, 51, 1);
-       border-radius: 5px;
-   }
-   label.checkbox {
-       color: #fff;
-   }
-   .control {
-       label {
-           background-color: transparent !important;
-       }
-   }
-   .input {
-       width: 100vw;
-   }
-   .input[type='text'], .input[type='password'], .input[type='email'], .input[type='tel'] {
-       background-color: transparent;
-       color: #fff !important;
-       padding: 0 10px;
-       &::-webkit-input-placeholder  {
-        color: rgba(255,255,255,.8) !important;
-      }
-   }
-  .dark-mode-icon {
-      color: #fff !important;
-      svg {
-          color: #fff !important;
-      }
-  }
-  @-webkit-keyframes autofill-dark-mode {
-    to {
-        color: #fff;
-        background: transparent; 
-    }
-}
-
-    input:-webkit-autofill {
-        -webkit-animation-name: autofill-dark-mode;
-        -webkit-animation-fill-mode: both;
-    }
-}
-

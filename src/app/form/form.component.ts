@@ -92,9 +92,7 @@ export class FormComponent implements OnInit {
       this.moveToTop();
     }
     else {
-      // this.loading = true;
-
-      window.open('http://www.devmagic.com.br', '_target');
+      this.loading = true;
     }
   }
 
