@@ -4,7 +4,10 @@
        <app-question [question]="question" [form]="form" *ngIf="question.step == currentStep"></app-question>
      </div>
 
-     <div class="form-row form-row-buttons" [ngClass]='{"just-one-step": currentStep == maxSteps || currentStep == 1, "more-than-one-step": currentStep > 1 }' id='buttons'>
+     <div class="form-row form-row-buttons" [ngClass]='{
+       "just-one-step": currentStep == maxSteps || currentStep == 1 || loading, 
+       "more-than-one-step": currentStep > 1 && !loading
+      }' id='buttons'>
        <button type="button" class='btn' (click)="goToPreviousStep()" *ngIf="currentStep > 1 && !loading"
          class="btn back-button" [innerHTML]='"button.cancel" | translate'></button>
        <div class="form-row align-right next-button">

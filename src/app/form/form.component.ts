@@ -18,30 +18,42 @@ export class FormComponent implements OnInit {
   payLoad = '';
   currentStep: number = 1;
   maxSteps: number;
-  submitted : boolean = false;
-  loading : boolean = false;
+  submitted: boolean = false;
+  loading: boolean = false;
 
   constructor(
     private qcs: QuestionControlService,
     private qs: QuestionsService
   ) { }
-  
+
 
   ngOnInit() {
+    // set the formulary context
     this.questions = this.qs.getQuestions('form1');
+
+    // defines how many steps the form has
     this.maxSteps = [...new Set(this.questions.map(p => p.step))].length;
+
+    // fill in the form with questions
     this.form = this.qcs.toFormGroup(this.questions);
+
+    // start the form
     this.onInitForm();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
+    // reset the form
     this.form.reset();
   }
 
   isValidFormStep() {
+    // get all questions from current step
     let questions = this.questions.filter((q) => q.step == this.currentStep);
+    
     let isValid = true;
     questions.forEach((question) => {
+
+      // check if there is any error
       if ((!this.form.controls[question.key].valid || this.form.controls[question.key].errors) || (question.required && !this.form.controls[question.key].value)) {
         isValid = false;
       }
@@ -76,28 +88,32 @@ export class FormComponent implements OnInit {
   }
 
   goToPreviousStep() {
+    // back one step
     if (this.currentStep > 1) {
       this.currentStep--;
       this.moveToTop()
     }
   }
 
-  checkTermsHaveBeenAccepted(){
+  checkTermsHaveBeenAccepted() {
     return this.form.value.terms == true;
   }
 
   async goToNextStep() {
+    // go to next step or submit
     if (this.currentStep < this.maxSteps) {
       this.currentStep++;
       this.moveToTop();
     }
     else {
+      // submit
       this.loading = true;
     }
   }
 
+  // when user submit a form this method is called
   onSubmit() {
-    if (!this.isValidFormStep()){
+    if (!this.isValidFormStep()) {
       this.submitted = true;
       this.getInvalidFields();
       document.getElementById('btn-' + this.currentStep).classList.add('shake');
@@ -106,9 +122,12 @@ export class FormComponent implements OnInit {
       }, 500);
       return;
     }
+
+    // next step method is called
     this.goToNextStep();
   }
 
+  // get all invalid fields and add a highlight
   getInvalidFields() {
     let questions = this.questions.filter((q) => q.step == this.currentStep);
     questions

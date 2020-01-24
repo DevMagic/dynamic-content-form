@@ -18,18 +18,55 @@ export class AllQuestions {
   questions: QuestionBase<any>[] = [
 
     /*
+      All questions on the form were listed.
+      To create new questions, just follow the template below:
 
-      //Abaixo o mínimo necessário para adicionar um campo ao formulário
 
+      ------------------------------------------------------- FIELD EXAMPLE ------------------------------------
       new TextboxQuestion({
-        key: 'name',
-        label: 'Nome e Cognome',
-        value: '',
-        placeholder: 'Come ti chiami?',
-        order : 1
-      }),
+        key: '___',                                                                                             |   field identifier
+        label: this.translate.instant('___'),                                                                   |   label, reference to the 'pt-BR.json' file
+        value: '',                                                                                              |   default = ''
+        placeholder: this.translate.instant('___'),                                                             |   field placeholder
+        errorMessage: this.translate.instant('___'),                                                            |   errorMessage, reference to the 'pt-BR.json' file
+        validationErrorMessage: this.translate.instant('___'),                                                  |   validationErrorMessage, reference to the 'pt-BR.json' file 
+        type: 'tel',                                                                                            |   field type
+        required: true,                                                                                         |   set field as mandatory
+        onChange: (option: any, form: FormGroup, questions: QuestionBase<any>[]) => {                           |   onChange method                  
+          let question = questions.find((question) => { return question.key == '____'});                        |   field identifier is used here
+          question.cssClass ? question.cssClass = null : false;                                                 |   apply custom class
+        },
+        step: 1,                                                                                                |   set which step the question should appear
+        order: 2,                                                                                               |   set the position of the question on the form
+        mask: '(00) 00000-0000',                                                                                |   set a mask
+        belongsTo: ['form1']                                                                                    |   set which forms the question should appear for
+      })
 
+
+      ------------------------------------------------ AUTOCOMPLETE EXAMPLE ------------------------------------
+      new AutocompleteQuestion({ 
+      key: '___',                                                                                               |   field identifier
+      label: this.translate.instant('___'),                                                                     |   label, reference to the 'pt-BR.json' file
+      placeholder: this.translate.instant('___'),                                                               |   field placeholder
+      belongsTo: ['form1'],                                                                                     |   set which forms the question should appear for 
+      cssClass: 'withoutMargin',
+      options: [                                                                                                |   list of options with values
+        { key: this.translate.instant('___'), value: '0' },
+        { key: this.translate.instant('___'), value: '1' },
+        { key: this.translate.instant('___'), value: '2' },
+        { key: this.translate.instant('___'), value: '3' },
+      ],
+      step: 1,                                                                                                  |   set which step the question should appear
+      required: true,                                                                                           |   set field as mandatory
+      order: 4,                                                                                                 |   set the position of the question on the form
+      errorMessage: this.translate.instant('___'),                                                              |   errorMessage, reference to the 'pt-BR.json' file
+      onChange: (option: any, form: FormGroup, questions: QuestionBase<any>[]) => {                             |   onChange method
+        let question = questions.find((question) => { return question.key == '___'});                           |   field identifier is used here
+        question.cssClass ? question.cssClass = null : false;                                                   |   apply custom class
+      }
+    }),
     */
+
 
     new TextboxQuestion({
       key: 'name',
@@ -43,7 +80,7 @@ export class AllQuestions {
         return (value && value.length && value.split(" ").length > 1 && value.split(" ")[1].length ? true : false);
       },
       onChange: (option: any, form: FormGroup, questions: QuestionBase<any>[]) => {
-        let question = questions.find((question) => { return question.key == 'name'});
+        let question = questions.find((question) => { return question.key == 'name' });
         question.cssClass ? question.cssClass = null : false;
       },
       required: true,
@@ -62,7 +99,7 @@ export class AllQuestions {
       type: 'tel',
       required: true,
       onChange: (option: any, form: FormGroup, questions: QuestionBase<any>[]) => {
-        let question = questions.find((question) => { return question.key == 'cellphone'});
+        let question = questions.find((question) => { return question.key == 'cellphone' });
         question.cssClass ? question.cssClass = null : false;
       },
       step: 1,
@@ -79,12 +116,12 @@ export class AllQuestions {
       errorMessage: this.translate.instant('form.step-one.email.error-message'),
       validationErrorMessage: this.translate.instant('form.step-one.email.validation-error-message'),
       onChange: (option: any, form: FormGroup, questions: QuestionBase<any>[]) => {
-        let question = questions.find((question) => { return question.key == 'email'});
+        let question = questions.find((question) => { return question.key == 'email' });
         question.cssClass ? question.cssClass = null : false;
       },
       type: 'email',
       required: true,
-      step: 1,
+      step: 2,
       order: 3,
       belongsTo: ['form1']
     }),
@@ -97,7 +134,7 @@ export class AllQuestions {
       errorMessage: this.translate.instant('form.step-one.birthdate.error-message'),
       validationErrorMessage: this.translate.instant('form.step-one.birthdate.validation-error-message'),
       onChange: (option: any, form: FormGroup, questions: QuestionBase<any>[]) => {
-        let question = questions.find((question) => { return question.key == 'birthdate'});
+        let question = questions.find((question) => { return question.key == 'birthdate' });
         question.cssClass ? question.cssClass = null : false;
       },
       validator: (value: any) => {
@@ -111,7 +148,7 @@ export class AllQuestions {
         let result = null;
 
         if (!dateIsValid) {
-          result =  this.translate.instant('form.step-one.birthdate.validation-error-message')
+          result = this.translate.instant('form.step-one.birthdate.validation-error-message')
         }
 
         return (result == null ? true : result);
@@ -119,7 +156,7 @@ export class AllQuestions {
       },
       type: 'tel',
       required: true,
-      step: 1,
+      step: 2,
       order: 4,
       mask: '00/00/0000',
       belongsTo: ['form1']
@@ -134,7 +171,7 @@ export class AllQuestions {
       },
       value: false,
       onChange: (option: any, form: FormGroup, questions: QuestionBase<any>[]) => {
-        let question = questions.find((question) => { return question.key == 'terms'});
+        let question = questions.find((question) => { return question.key == 'terms' });
         question.cssClass ? question.cssClass = null : false;
       },
       step: 1,
@@ -160,7 +197,7 @@ export class AllQuestions {
       order: 4,
       errorMessage: this.translate.instant('form.step-one.english-level.error-message'),
       onChange: (option: any, form: FormGroup, questions: QuestionBase<any>[]) => {
-        let question = questions.find((question) => { return question.key == 'english_level'});
+        let question = questions.find((question) => { return question.key == 'english_level' });
         question.cssClass ? question.cssClass = null : false;
       }
     }),
