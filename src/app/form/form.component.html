@@ -1,27 +1,27 @@
  <div class='form-wrapper'>
-  <form (ngSubmit)="onSubmit()" [formGroup]="form">
-    <div *ngFor="let question of questions" class="form-row">
-      <app-question [question]="question" [form]="form" *ngIf="question.step == currentStep"></app-question>
-    </div> 
+   <form (ngSubmit)="onSubmit()" [formGroup]="form">
+     <div *ngFor="let question of questions" class="form-row">
+       <app-question [question]="question" [form]="form" *ngIf="question.step == currentStep"></app-question>
+     </div>
 
-    <div class="form-row" id='buttons'>
-      <button type="button" class='btn' (click)="goToPreviousStep()" *ngIf="currentStep > 1 && !loading"
-        class="btn back-button" [innerHTML]="Voltar"></button>
-      <div class="form-row align-right next-button">
+     <div class="form-row form-row-buttons" [ngClass]='{"just-one-step": currentStep == maxSteps || currentStep == 1, "more-than-one-step": currentStep > 1 }' id='buttons'>
+       <button type="button" class='btn' (click)="goToPreviousStep()" *ngIf="currentStep > 1 && !loading"
+         class="btn back-button" [innerHTML]='"button.cancel" | translate'></button>
+       <div class="form-row align-right next-button">
 
-        <button type="submit" id="btn-{{currentStep}}" class='animated faster btn default-button'
-          [ngClass]="{'disabled': !isValidFormStep() || !form.controls['terms'].value }" *ngIf="currentStep < maxSteps"
-          [innerHTML]="'button.next' | translate">
-          <span class="fas fa-arrow-right"></span>
-        </button>
+         <button type="submit" id="btn-{{currentStep}}" class='animated faster btn default-button'
+           [ngClass]="{'disabled': !isValidFormStep() || !form.controls['terms'].value }" *ngIf="currentStep < maxSteps"
+           [innerHTML]="'button.next' | translate">
+           <span class="fas fa-arrow-right"></span>
+         </button>
 
-        <button type="submit" id="btn-{{currentStep}}"
-          [ngClass]="{'disabled': !isValidFormStep() || !form.controls['terms'].value }"
-          class='animated faster btn default-button' *ngIf="!loading && currentStep == maxSteps"
-          [innerHTML]="'button.submit' | translate"></button>
+         <button type="submit" id="btn-{{currentStep}}"
+           [ngClass]="{'disabled': !isValidFormStep() || !form.controls['terms'].value }"
+           class='animated faster btn default-button' *ngIf="!loading && currentStep == maxSteps"
+           [innerHTML]="'button.submit' | translate"></button>
 
-        <button *ngIf='loading && currentStep == maxSteps' class='button btn default-button is-loading'></button>
-      </div>
-    </div>
-  </form>
-</div>
+         <button *ngIf='loading && currentStep == maxSteps' class='button btn default-button is-loading'></button>
+       </div>
+     </div>
+   </form>
+ </div>

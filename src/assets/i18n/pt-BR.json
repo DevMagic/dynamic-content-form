@@ -145,7 +145,7 @@
         }
     },
     "button": {
-        "cancel": "<span class='fas fa-arrow-left'></span> Indietro",
+        "cancel": "<span class='fas fa-arrow-left'></span> Voltar",
         "next": "Próximo <span class='fas fa-arrow-right'></span>",
         "submit": "Finalizar cadastro!"
     }

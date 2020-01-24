@@ -1,7 +1,7 @@
 @import '../../styles.scss';
 
 .form-wrapper {
-  padding: 10px 0;
+  padding: 10px;
 }
 
 button {
@@ -14,11 +14,6 @@ button {
   &.disabled{
     opacity: 0.7;
   }
-}
-
-.align-right {
-  display: flex;
-  flex-direction: row-reverse;
 }
 
 .back-button {
@@ -34,10 +29,16 @@ button {
   }
 }
 
-.next-button {
-  float: right;
+.form-row-buttons {
   display: flex;
+  &.just-one-step {
+    justify-content: flex-end;
+  }
+  &.more-than-one-step {
+    justify-content: space-between;
+  }
 }
+
 @media (max-width: 990px) {
   #buttons {
     display: flex;
