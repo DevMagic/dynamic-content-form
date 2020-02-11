@@ -1,0 +1,58 @@
+@import './styles.scss';
+
+button {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 10px 40px;
+  font-size: 16px;
+
+  &.disabled{
+    opacity: 0.7;
+  }
+}
+
+.back-button {
+  float: left;
+  display: flex;
+  background-color: transparent;
+  color: #B1B1B1;
+  border: 1px solid #B1B1B1;
+  cursor: pointer;
+  transition: .2s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.form-row-buttons {
+  display: flex;
+  margin: 20px 0;
+  &.just-one-step {
+    justify-content: flex-end;
+  }
+  &.more-than-one-step {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 990px) {
+  #buttons {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+
+    >.form-row,
+    button {
+      width: 100%;
+      margin: 10px;
+      margin: 0;
+    }
+
+    button {
+      padding: 15px 40px;
+      margin: 10px 0;
+      justify-content: center;
+    }
+  }
+}

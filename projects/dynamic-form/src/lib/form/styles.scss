@@ -1,0 +1,78 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'bulma/css/bulma.css';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+$error: #FF3E1D;
+$link: #429FBC;
+$text: #333333;
+$primaryColor: #F85A3F;
+
+.btn {
+    border-radius: 5px;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    transition: .3s;
+    border: none;
+    padding: 10px 25px;
+    font-size: 16px;
+    min-height: 40px;
+    margin: 0;
+    align-items: center;
+
+    span,
+    .fas,
+    svg {
+        margin: 0 5px;
+        display: inline-block;
+    }
+
+    &:hover {
+        transform: scale(1.05)
+    }
+
+    &[disabled] {
+        opacity: 0.7;
+    }
+
+    &.with-opacity {
+        opacity: .8;
+    }
+
+    &.default-button {
+        background-color: $primaryColor;
+    }
+
+    &.without-background {
+        background-color: transparent;
+
+        &.white {
+            color: #fff;
+            border: 1px solid #fff;
+        }
+    }
+}
+
+.mat-form-field {
+
+    width: 100%;
+
+    .mat-form-field-underline {
+        display: none !important;
+    }
+
+    .mat-form-field-wrapper {
+
+        padding-bottom: 0;
+
+        .mat-form-field-infix {
+            border: 0 !important;
+            padding: 0 !important;
+        }
+
+    }
+}

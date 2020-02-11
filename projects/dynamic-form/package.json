@@ -1,0 +1,17 @@
+{
+  "name": "dynamic-form",
+  "version": "1.0.1",
+  "description": "Dynamic Form - Test",
+  "author": "Claudera & Luizero",
+  "peerDependencies": {
+    "@angular/common": "^8.2.14",
+    "@angular/core": "^8.2.14",
+    "@angular/cdk": "~8.2.3",
+    "@angular/material": "^8.2.3",
+    "bulma": "^0.7.5",
+    "moment-timezone": "^0.5.27",
+    "ngx-mask": "^8.1.6",
+    "@ngx-translate/core": "^11.0.1",
+    "@ngx-translate/http-loader": "^4.0.0"
+  }
+}
